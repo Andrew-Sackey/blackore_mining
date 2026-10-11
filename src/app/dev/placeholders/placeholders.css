@@ -1,0 +1,57 @@
+.placeholders {
+  padding: calc(120px + env(safe-area-inset-top, 0px)) clamp(16px, 5vw, 48px) 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 36px;
+}
+
+.placeholders-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.placeholders h1 {
+  margin: 8px 0;
+  font: 600 clamp(36px, 5vw, 56px) / 1 var(--font-sans);
+  letter-spacing: -0.03em;
+}
+
+.placeholders h2 {
+  margin: 0 0 12px;
+  font: 600 22px/1.2 var(--font-sans);
+}
+
+.placeholders p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.placeholders table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.placeholders th,
+.placeholders td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 16px 12px 0;
+  border-bottom: 1px solid var(--color-hair);
+  font: 400 15px/1.45 var(--font-sans);
+}
+
+.placeholders th {
+  color: var(--color-copper-hi);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.placeholders td:last-child {
+  color: var(--color-muted);
+  width: 34%;
+}

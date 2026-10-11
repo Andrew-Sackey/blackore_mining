@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Desktop Report at a Glance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --ink:#050505; --fg:#F5F5F7; --muted:#9A948D; --copper:#C47A3D; --copper-hi:#E3A56C;
+  --hair:rgba(245,245,247,.12); --paper:#F2F0EB; --paper-ink:#2B2723; --paper-rule:#D9D4CC; --report-blue:#1F5F7A;
+  --f-body:"Geist",ui-sans-serif,system-ui,sans-serif;
+  --f-mono:ui-monospace,"SF Mono",Menlo,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--fg);font-family:var(--f-body)}
+button{font:inherit;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:clamp(56px,9vw,120px) clamp(16px,5vw,48px);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(28px,5vw,72px);align-items:start}
+@media (max-width:1023px){.wrap{grid-template-columns:minmax(0,1fr)}.objcol{order:-1}}
+.eyebrow{font:400 10px/1.4 var(--f-mono);letter-spacing:.22em;text-transform:uppercase;color:var(--copper-hi);margin:0}
+h2{font:600 clamp(30px,4.4vw,56px)/1.05 var(--f-body);letter-spacing:-.03em;margin:14px 0 0}
+.facts{margin:18px 0 0;font:400 12px/1 var(--f-mono);color:var(--muted)}
+.facts b{color:var(--fg);font-weight:500}
+.summary{margin:28px 0 0}
+.summary div{display:grid;grid-template-columns:9rem minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--hair)}
+.summary dt{font:400 11px/1.5 var(--f-mono);color:var(--copper-hi);letter-spacing:.08em;text-transform:uppercase}
+.summary dd{margin:0;font:400 16px/1.6 var(--f-body);color:#C9C4BE}
+@media (max-width:520px){.summary div{grid-template-columns:minmax(0,1fr);gap:6px}}
+.toc{list-style:none;margin:36px 0 0;padding:0;border-top:1px solid var(--hair)}
+.toc li{display:grid;grid-template-columns:4.2rem minmax(0,1fr) auto;border-bottom:1px solid var(--hair)}
+.toc button{grid-column:1 / -1;grid-row:1;display:grid;grid-template-columns:4.2rem minmax(0,1fr) auto;gap:14px;width:100%;padding:14px 4px;border:0;background:none;text-align:left;cursor:pointer}
+.toc .go{grid-column:3;grid-row:1;align-self:center;color:var(--copper-hi);text-decoration:none;opacity:0;pointer-events:none}
+.toc li:hover .go,.toc li:focus-within .go,.toc li.is-on .go{opacity:1;pointer-events:auto}
+.objcol{position:sticky;top:96px;overflow-x:clip}
+@media (max-width:1023px){.objcol{position:relative;top:0}}
+.stage{position:relative;height:clamp(420px,52vw,600px);perspective:1600px;display:grid;place-items:center}
+.slot{position:absolute;width:min(330px,62vw);aspect-ratio:210/297;transform-style:preserve-3d;transition:transform 1s var(--ease),filter .8s var(--ease),opacity .5s}
+.slot.dealing{transition:transform .95s cubic-bezier(.34,1.32,.64,1),opacity .4s ease-out}
+.page{position:absolute;inset:0;border-radius:6px;background:var(--paper);overflow:hidden;transform-origin:0% 60%;box-shadow:0 30px 60px -20px rgba(0,0,0,.75)}
+.stage.breeze .page{animation:riffle 7.5s var(--ease) infinite;animation-delay:var(--d,0s)}
+@keyframes riffle{0%,62%,100%{transform:none}70%{transform:rotateY(-9deg) rotateX(2.5deg) translate3d(0,-5px,6px)}80%{transform:rotateY(2deg)}88%{transform:rotateY(-.8deg)}}
+.page.cover{background:#fff;transform-origin:0% 55%}
+.page.cover img,.fig img{width:100%;height:100%;object-fit:cover;display:block}
+.pin{position:absolute;inset:0;padding:9% 9% 7%;display:flex;flex-direction:column;gap:7px}
+.phead,.pfoot{display:flex;justify-content:space-between;font:500 6.5px/1 var(--f-body);color:var(--report-blue)}
+.pfoot{color:#8C857C;font-style:italic;border-top:.5px solid var(--paper-rule);padding-top:6px}
+.phead{border-bottom:.5px solid var(--paper-rule);padding-bottom:6px}
+.pnum{font:600 9px/1 var(--f-mono);color:var(--copper)}
+.ptitle{font:600 15px/1.15 var(--f-body);color:var(--paper-ink)}
+.fig{flex:1;min-height:0;background:#E8E4DC;border-radius:4px;overflow:hidden;position:relative}
+@media (prefers-reduced-motion:reduce){.slot{transition-duration:.01ms}.stage.breeze .page{animation:none}}
+</style>
+</head>
+<body>
+<p style="max-width:70ch;margin:24px auto;padding:0 16px;color:#9A948D;font:400 13px/1.5 var(--f-body)">Layout reference for the report stack. The live page is <code>ReportGlance</code>. Cover and the local-geology figure are the files in <code>public/docs</code>. This file does not inline the geology paths.</p>
+<section class="wrap" aria-labelledby="repH">
+  <div>
+    <p class="eyebrow">The desktop study</p>
+    <h2 id="repH">The groundwork, documented.</h2>
+    <p class="facts"><b>GeoXpert Ltd</b> · September 2026 · 12 pages · 70 pillars scheduled</p>
+    <dl class="summary">
+      <div><dt>What it is</dt><dd>A geological desktop study of the Badu concession, prepared by principal geologist Bernard Asare of GeoXpert Ltd.</dd></div>
+      <div><dt>What it does</dt><dd>It combines the surveyed concession plan with published regional geology, the Geological Survey's Wenchi map sheet and environmental data, then judges how prospective the ground is and how to explore it.</dd></div>
+      <div><dt>What it shows</dt><dd>Birimian volcanic and metasedimentary rocks, granitoid contacts and crossing faults: a setting comparable to Ghana's established gold belts, and a phased plan to test it.</dd></div>
+      <div><dt>What it is not</dt><dd>A discovery. No samples have been taken yet. The study sets out the case that field work will test.</dd></div>
+    </dl>
+    <ul class="toc" id="toc"></ul>
+  </div>
+  <div class="objcol"><div class="stage" id="stage" aria-hidden="true"></div></div>
+</section>
+<script>
+const CH = [
+  ["p. 4–5","Location, access and setting","Location map"],
+  ["p. 5–6","Regional geology","Regional setting"],
+  ["p. 7–8","Local geology","Geology map"],
+  ["p. 8–9","Prospectivity","Comparison"],
+  ["p. 9–10","Exploration strategy","Roadmap"],
+  ["p. 11–12","Boundary pillar schedule","Licence boundary"],
+];
+const stage = document.getElementById("stage");
+const toc = document.getElementById("toc");
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function page(title, extra){
+  const el = document.createElement("div");
+  el.className = "page" + (extra || "");
+  el.innerHTML = extra ? `<img src="../public/docs/report-cover.webp" alt="">` : `<div class="pin"><div class="phead"><span>BADU GEOLOGICAL DESKTOP STUDY REPORT</span><span>September 8, 2026</span></div><div class="pnum">SECTION</div><div class="ptitle">${title}</div><div class="fig">${title==="Local geology"?`<img src="../public/docs/report-page-geology.webp" alt="">`:""}</div><div class="pfoot"><span>PREPARED BY BERNARD ASARE - GEOXPERT LIMITED</span><span></span></div></div>`;
+  const slot = document.createElement("div");
+  slot.className = "slot";
+  slot.appendChild(el);
+  return slot;
+}
+const cover = page("", " cover");
+const pages = CH.map(c => page(c[1]));
+[...pages].reverse().forEach(p => stage.appendChild(p));
+stage.appendChild(cover);
+const all = [cover, ...pages];
+const N = all.length;
+all.forEach((s,i)=>s.firstChild.style.setProperty("--d", ((N-1-i)*0.11)+"s"));
+let active = -1, fanned = false, dealt = RM;
+function rest(i, spread){
+  const st = innerWidth < 600 ? 9 : 16, base = -2.5*st;
+  if (!spread) return `translate3d(${base}px,0,${-i*2}px)`;
+  return `translate3d(${base+i*st}px,${-i*st*.45}px,${-i*30}px) rotateZ(${i*(st/7)}deg) rotateY(${-10-i*1.5}deg)`;
+}
+function layout(){
+  all.forEach((p,i)=>{
+    if (RM){
+      const show = active < 0 ? i === 0 : i === active+1;
+      p.style.transform = "none"; p.style.opacity = show ? 1 : 0; p.style.filter = "none"; return;
+    }
+    let t = rest(i, fanned), z = 100-i, f = "brightness(1)";
+    if (!dealt){ t = `translate3d(${-10+i*4}px,-150px,${-i*30}px) rotateZ(${-12+i*3}deg) rotateX(18deg)`; p.style.opacity = 0; }
+    else p.style.opacity = 1;
+    if (dealt && active >= 0){
+      if (i === active+1){ t = "translate3d(-6%,-2%,140px) rotateZ(-2deg) rotateY(0deg) scale(1.02)"; z = 200; }
+      else { t = rest(i,true)+" translate3d(18px,0,-40px)"; f = "brightness(.72)"; }
+    }
+    p.style.transform = t; p.style.zIndex = z; p.style.filter = f;
+  });
+}
+function breeze(on){ stage.classList.toggle("breeze", on && dealt && active < 0 && !RM && !document.hidden); }
+CH.forEach((c,i)=>{
+  const li = document.createElement("li");
+  li.innerHTML = `<button type="button" aria-pressed="false"><span>${c[0]}</span><span>${c[1]}</span></button><a class="go" href="#">${c[2]} →</a>`;
+  li.querySelector("button").addEventListener("mouseenter", ()=>matchMedia("(hover:hover)").matches && set(i));
+  li.querySelector("button").addEventListener("focus", ()=>set(i));
+  li.querySelector("button").addEventListener("click", ()=>set(active===i && !matchMedia("(hover:hover)").matches ? -1 : i));
+  toc.appendChild(li);
+});
+toc.addEventListener("mouseleave", ()=>matchMedia("(hover:hover)").matches && set(-1));
+function set(i){ active = i; [...toc.children].forEach((li,j)=>li.classList.toggle("is-on", j===i)); if (dealt){ layout(); breeze(true);} }
+let inView = false;
+const io = new IntersectionObserver(es=>{
+  inView = es[0].isIntersecting;
+  if (inView && !fanned) deal(); else breeze(inView);
+},{threshold:.35});
+io.observe(stage);
+function deal(){
+  if (RM){ fanned = true; dealt = true; layout(); return; }
+  fanned = true;
+  [...all].reverse().forEach((s,k)=>{
+    const i = N-1-k;
+    setTimeout(()=>{ s.classList.add("dealing"); s.style.opacity = 1; s.style.transform = rest(i,true); setTimeout(()=>s.classList.remove("dealing"),1000); }, k*110);
+  });
+  setTimeout(()=>{ dealt = true; layout(); breeze(true); }, N*110+900);
+}
+layout();
+document.addEventListener("visibilitychange", ()=>breeze(!document.hidden));
+addEventListener("resize", layout);
+</script>
+</body>
+</html>
