@@ -19,18 +19,6 @@
   object-position: center 42%;
 }
 
-.contact-still .media-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgb(5 5 5 / 0.42);
-  pointer-events: none;
-}
-
-.contact-still [data-media="still-badu-dusk"] img {
-  object-position: center 62%;
-}
-
 .contact-layout {
   display: grid;
   gap: clamp(40px, 6vw, 72px);
@@ -487,11 +475,6 @@
   display: none;
 }
 
-.contact-still {
-  margin-top: clamp(48px, 8vw, 96px);
-  overflow: clip;
-}
-
 @media (min-width: 640px) {
   .topic-switch {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -510,9 +493,6 @@
     padding: 0;
   }
 
-  .contact-still .media-frame[data-ratio="21/9"] {
-    aspect-ratio: 16 / 9;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -528,10 +508,6 @@
   .contact-side {
     grid-column: span 5;
     padding-left: clamp(12px, 2vw, 28px);
-  }
-
-  .contact-still {
-    grid-column: 1 / -1;
   }
 }
 

@@ -48,30 +48,6 @@ export const home = {
     frameId: "still-access-road" as MediaId,
     note: "Schematic route. Town positions approximate.",
   },
-  geology: {
-    eyebrow: "Geological setting",
-    title: "Three things the rocks tell us.",
-    lede: "The desktop study maps a typical Birimian volcano–sedimentary sequence across the tenement, folded and faulted during the Eburnean orogeny.",
-    cards: [
-      {
-        title: "A layered Birimian sequence",
-        body: "Mafic to intermediate volcanic flows and pyroclastics sit alongside turbidites, greywackes, phyllites and schists. Competent volcanic rock fractures readily, which favours vein formation.",
-      },
-      {
-        title: "Crossing fault systems",
-        body: "NE–SW and NW–SE faults and shear zones cut the tenement. In Birimian gold systems, intersections like these are where mineralising fluids tend to collect.",
-      },
-      {
-        title: "Granitoid contacts",
-        body: "Granitoid bodies intrude the sequence. Their margins concentrate strain and open pathways for hydrothermal fluids, a setting typical of orogenic gold.",
-      },
-    ],
-    frameId: "still-river-stones" as MediaId,
-    source:
-      "Source: GeoXpert geological desktop study, September 2026. Field mapping and sampling are the next step.",
-    link: "Explore the concession geology",
-    href: "/concession",
-  },
   roadmap: {
     eyebrow: "Exploration roadmap",
     title: "Every phase earns the next.",
@@ -115,7 +91,7 @@ export const home = {
     eyebrow: "Investor enquiries",
     title: "Get the full Badu briefing.",
     body: "Licence details, the desktop study and the exploration plan, shared directly with interested parties.",
-    mediaId: "band-badu-briefing" as MediaId,
+    mediaId: "still-community" as MediaId,
     primary: "Request licence information",
     primaryHref: "/contact?topic=licence",
     secondary: "Ask for the desktop study",

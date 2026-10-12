@@ -17,7 +17,6 @@ import {
 import { Copy } from "@/components/content/Copy";
 import { useTagline } from "@/components/content/TaglineWatch";
 import { ConcessionOutline } from "@/components/home/ConcessionOutline";
-import { MediaFrame } from "@/components/media/MediaFrame";
 import { DrawPath } from "@/components/motion/DrawPath";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitHeading } from "@/components/motion/SplitHeading";
@@ -514,9 +513,6 @@ function EnquiryBody({ topic, raw = null }: { topic: TopicKey; raw?: string | nu
           )}
         </div>
         <SideColumn />
-      </div>
-      <div className="contact-still">
-        <MediaFrame id="still-badu-dusk" ratio="21/9" />
       </div>
     </>
   );

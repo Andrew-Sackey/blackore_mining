@@ -197,5 +197,3 @@ export const reportGlance = {
 } as const;
 
 export const surveyCaption = "Surveyed plan of the concession, FS 0703B4, 18 May 2026.";
-
-export const quartzCaption = "A limestone peak at sunset, with a snow-capped range behind it.";

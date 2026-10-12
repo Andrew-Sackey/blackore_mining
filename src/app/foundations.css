@@ -307,6 +307,15 @@
   );
 }
 
+.media-band:has([data-media="still-community"]) .media-band-shade[data-shade="center"] {
+  background: radial-gradient(
+    ellipse 58% 64% at center,
+    rgb(5 5 5 / 0.78) 0%,
+    rgb(5 5 5 / 0.42) 46%,
+    rgb(5 5 5 / 0) 72%
+  );
+}
+
 .media-figure {
   margin: 0;
   display: grid;

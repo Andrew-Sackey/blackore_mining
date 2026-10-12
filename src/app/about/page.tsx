@@ -5,9 +5,7 @@ import { People } from "@/components/about/People";
 import { Principles } from "@/components/about/Principles";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
-import { Section } from "@/components/layout/Section";
 import { MediaBand } from "@/components/media/MediaBand";
-import { MediaFrame } from "@/components/media/MediaFrame";
 import { TransitionLink } from "@/components/nav/TransitionLink";
 import { Body } from "@/components/type/Body";
 import { aboutClose, aboutHero } from "@/content/about";
@@ -38,13 +36,6 @@ export default function AboutPage() {
       <MediaBand id="band-harmattan-haze" height="short" />
       <Principles />
       <People />
-      <Section tone="ink" space="lg">
-        <Container>
-          <div className="about-frame">
-            <MediaFrame id="still-community" ratio="16/9" />
-          </div>
-        </Container>
-      </Section>
       <div className="about-close">
         <Container>
           <Body>{aboutClose.line}</Body>

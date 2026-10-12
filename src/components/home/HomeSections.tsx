@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef } from "react";
 import { home } from "@/content/home";
 import { Copy } from "@/components/content/Copy";
 import { useTagline } from "@/components/content/TaglineWatch";
@@ -11,7 +10,6 @@ import { Grid } from "@/components/layout/Grid";
 import { Section } from "@/components/layout/Section";
 import { MediaBand } from "@/components/media/MediaBand";
 import { MediaFrame } from "@/components/media/MediaFrame";
-import { DrawPath } from "@/components/motion/DrawPath";
 import { Reveal } from "@/components/motion/Reveal";
 import { ScrollWords } from "@/components/motion/ScrollWords";
 import { SplitHeading } from "@/components/motion/SplitHeading";
@@ -20,72 +18,6 @@ import { Body } from "@/components/type/Body";
 import { Caption } from "@/components/type/Caption";
 import { Eyebrow } from "@/components/type/Eyebrow";
 import { Lede } from "@/components/type/Lede";
-import { Subheading } from "@/components/type/Subheading";
-import { dur, ease, trigger } from "@/lib/motion";
-import { reducedMotion } from "@/lib/motion-flags";
-import { gsap, useGSAP } from "@/lib/gsap";
-
-function wave(y: number) {
-  return `M24 ${y}C78 ${y - 16},128 ${y + 14},176 ${y}S252 ${y - 12},296 ${y + 2}`;
-}
-
-const strata = [48, 82, 116, 150, 184].map((y, index) => ({
-  d: wave(y),
-  accent: index === 2,
-}));
-
-const faults = [
-  { d: "M70 210 L100 30" },
-  { d: "M110 216 L140 36" },
-  { d: "M150 222 L180 42" },
-  { d: "M24 78 L300 128" },
-  { d: "M24 112 L300 162" },
-  { d: "M24 146 L300 196" },
-];
-
-const intrusion = [
-  {
-    d: "M160 36C220 36 268 78 268 128C268 186 220 214 160 214C100 214 52 186 52 128C52 78 100 36 160 36Z",
-    accent: true,
-  },
-  { d: "M268 128 H304" },
-  { d: "M230 58 L262 28" },
-  { d: "M160 36 V12" },
-  { d: "M90 58 L58 28" },
-  { d: "M52 128 H16" },
-  { d: "M160 214 V232" },
-  { d: "M230 196 L262 222" },
-  { d: "M90 196 L58 222" },
-];
-
-const figures = [strata, faults, intrusion] as const;
-
-function CardTitle({ text }: { text: string }) {
-  useTagline(text);
-  return <Subheading>{text}</Subheading>;
-}
-
-function FaultPulse() {
-  const ref = useRef<HTMLSpanElement>(null);
-  useGSAP(
-    () => {
-      const el = ref.current;
-      if (!el || reducedMotion()) return;
-      gsap.to(el, {
-        scale: 1.55,
-        opacity: 0.45,
-        duration: dur.base,
-        ease: ease.out,
-        yoyo: true,
-        repeat: -1,
-        transformOrigin: "center",
-        scrollTrigger: { trigger: el, start: trigger.start, once: true },
-      });
-    },
-    { scope: ref },
-  );
-  return <span ref={ref} className="geo-pulse" />;
-}
 
 export function Statement() {
   useTagline(home.statement.line);
@@ -121,51 +53,6 @@ export function LocationAccess() {
           </div>
           <LocationMap />
         </Grid>
-      </Container>
-    </Section>
-  );
-}
-
-export function GeologicalSetting() {
-  useTagline(home.geology.title);
-  return (
-    <Section tone="ink-2" space="lg">
-      <Container>
-        <div className="section-intro">
-          <Eyebrow>{home.geology.eyebrow}</Eyebrow>
-          <SplitHeading className="type-heading">{home.geology.title}</SplitHeading>
-          <Lede>{home.geology.lede}</Lede>
-        </div>
-        <div className="geo-cards">
-          {home.geology.cards.map((card, index) => (
-            <article key={card.title} className="geo-card">
-              <div className="geo-figure">
-                <DrawPath
-                  className="geo-draw"
-                  viewBox="0 0 320 240"
-                  paths={figures[index]}
-                  label={card.title}
-                />
-                {index === 1 ? <FaultPulse /> : null}
-              </div>
-              <div className="geo-card-copy">
-                <CardTitle text={card.title} />
-                <Body>{card.body}</Body>
-              </div>
-            </article>
-          ))}
-        </div>
-        <Grid className="geo-follow">
-          <div className="geo-frame">
-            <MediaFrame id={home.geology.frameId} ratio="16/9" />
-          </div>
-        </Grid>
-        <div className="geo-foot">
-          <Caption className="is-sentence">{home.geology.source}</Caption>
-          <TransitionLink href={home.geology.href} className="text-link">
-            {home.geology.link} <span aria-hidden="true">→</span>
-          </TransitionLink>
-        </div>
       </Container>
     </Section>
   );

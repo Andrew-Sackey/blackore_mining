@@ -8,7 +8,6 @@ import { ProgrammeTimeline } from "@/components/licence/ProgrammeTimeline";
 import { Responsible } from "@/components/licence/Responsible";
 import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
-import { MediaBand } from "@/components/media/MediaBand";
 import { TransitionLink } from "@/components/nav/TransitionLink";
 import { licenceClose, licenceHero } from "@/content/licence";
 import { pageMetadata } from "@/lib/seo";
@@ -35,7 +34,6 @@ export default function LicencePage() {
       <LicenceStatus />
       <LicenceGlance />
       <MilestoneSpine />
-      <MediaBand id="band-survey-pillar" height="short" />
       <PhaseExplorer />
       <ProgrammeTimeline />
       <Partnerships />

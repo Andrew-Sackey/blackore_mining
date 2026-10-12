@@ -3,12 +3,8 @@ import { ComparableSettings } from "@/components/concession/ComparableSettings";
 import { GeologyMapTour } from "@/components/concession/GeologyMapTour";
 import { ReportGlance } from "@/components/concession/ReportGlance";
 import { ZoomLadder } from "@/components/concession/ZoomLadder";
-import { Container } from "@/components/layout/Container";
 import { PageHero } from "@/components/layout/PageHero";
-import { Section } from "@/components/layout/Section";
-import { MediaBand } from "@/components/media/MediaBand";
-import { MediaFrame } from "@/components/media/MediaFrame";
-import { concession, quartzCaption } from "@/content/concession";
+import { concession } from "@/content/concession";
 import { pageMetadata } from "@/lib/seo";
 import "./concession.css";
 
@@ -47,14 +43,8 @@ export default function ConcessionPage() {
         mediaId={concession.mediaId}
       />
       <ReportGlance />
-      <MediaBand id="band-woodland-walk" height="short" />
       <ZoomLadder />
       <GeologyMapTour />
-      <Section space="md" tone="ink">
-        <Container>
-          <MediaFrame id="still-quartz-float" ratio="16/9" caption={quartzCaption} />
-        </Container>
-      </Section>
       <ComparableSettings />
     </main>
   );

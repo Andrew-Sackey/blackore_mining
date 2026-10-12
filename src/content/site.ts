@@ -29,7 +29,6 @@ export const footer = {
  * Contact has none.
  */
 const footerBands: Record<string, MediaId> = {
-  "/about": "still-badu-town",
   "/concession": "band-mine-tunnel",
   "/licence": "still-outcrop",
 };
@@ -44,6 +43,6 @@ export const SHOW_SURVEY_PLAN = false;
 export const SHOW_TEAM = true;
 
 export function footerBandFor(pathname: string): MediaId | null {
-  if (pathname === "/" || pathname === "/contact" || pathname === "/privacy") return null;
+  if (pathname === "/" || pathname === "/about" || pathname === "/contact" || pathname === "/privacy") return null;
   return footerBands[pathname] ?? "band-stream";
 }

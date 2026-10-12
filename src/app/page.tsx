@@ -1,7 +1,6 @@
 import {
   ClosingBand,
   ExplorationRoadmap,
-  GeologicalSetting,
   LocationAccess,
   Statement,
 } from "@/components/home/HomeSections";
@@ -27,7 +26,6 @@ export default function Home() {
       >
         <Statement />
         <LocationAccess />
-        <GeologicalSetting />
         <ExplorationRoadmap />
         <ClosingBand />
       </Hero>

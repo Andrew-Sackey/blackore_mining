@@ -173,9 +173,9 @@ export const mediaItems = [
   {
     id: "still-field-map",
     kind: "image",
-    src: "/media/still-field-map.jpg",
-    alt: "A narrow rock passage lit orange, opening to daylight at the far end",
-    shot: "A narrow rock passage lit orange, opening to daylight at the far end",
+    src: "/media/pexels-nandofreitasr-25650201.jpg",
+    alt: "Aerial view of a town, a straight road running through rust-red roofs toward the horizon",
+    shot: "Aerial view of a town, a straight road running through rust-red roofs toward the horizon",
     placeholderVariant: "dawn",
   },
   {
